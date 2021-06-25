@@ -24,6 +24,27 @@ namespace Fillword
 			this.drawer = drawer;
 		}
 
+		public void SelectButton()
+		{
+			ConsoleKeyInfo chInput = Console.ReadKey();
+
+			switch (chInput.Key)
+			{
+				case ConsoleKey.UpArrow:
+					currentButtonNumber--;
+					break;
+				case ConsoleKey.DownArrow:
+					currentButtonNumber++;
+					break;
+				case ConsoleKey.Enter:
+					isRunning = false;
+					break;
+			}
+
+			if (currentButtonNumber < 0) currentButtonNumber = 3;
+			if (currentButtonNumber > 3) currentButtonNumber = 0;
+		}
+
 		public void Draw()
 		{
 			drawer.Draw(this);
@@ -37,6 +58,26 @@ namespace Fillword
 		public int GetCurrentButtonNumber()
 		{
 			return currentButtonNumber;
+		}
+
+		public ConsoleColor GetSelectedColor()
+		{
+			return SelectedColor;
+		}
+
+		public ConsoleColor GetDefaultTextColor()
+		{
+			return DefaultTextColor;
+		}
+
+		public bool IsCurrentButton(int i)
+		{
+			return currentButtonNumber == i;
+		}
+
+		public bool IsRunning()
+		{
+			return isRunning;
 		}
 	}
 }
