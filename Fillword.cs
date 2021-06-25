@@ -18,6 +18,7 @@ namespace Fillword
 		public void Run()
 		{
 			RunMenu();
+			ActivateButton();
 		}
 
 		private void RunMenu()
@@ -27,6 +28,50 @@ namespace Fillword
 				menu.Draw();
 				menu.SelectButton();
 			} while (menu.IsRunning());
+		}
+
+		private void ActivateButton()
+		{
+			Console.Clear();
+			int key = menu.GetCurrentButtonNumber();
+
+			switch (key)
+			{
+				case 0:
+					StartNewGame();
+					break;
+				case 1:
+					ContinueGame();
+					break;
+				case 2:
+					OpenRating();
+					break;
+				case 3:
+					ExitApp();
+					break;
+			}
+		}
+
+		private void StartNewGame()
+		{
+			Console.WriteLine("Enter Player name:");
+			string name = Console.ReadLine();
+			Player player = new Player(name);
+		}
+
+		private void ContinueGame()
+		{
+			drawer.DrawContinueGame();
+		}
+
+		private void OpenRating()
+		{
+			drawer.DrawRating();
+		}
+
+		private void ExitApp()
+		{
+			drawer.DrawExit();
 		}
 	}
 }

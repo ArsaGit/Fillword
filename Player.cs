@@ -4,7 +4,18 @@ using System.Text;
 
 namespace Fillword
 {
-	class Player
+	public class Player
 	{
+		private readonly string name;
+
+		public Player(string name)
+		{
+			this.name = name;
+		}
+
+		public string GetName()
+		{
+			return name;
+		}
 	}
 }

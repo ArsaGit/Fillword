@@ -7,5 +7,9 @@ namespace Fillword
 	public interface IDrawer
 	{
 		void Draw(Menu menu);
+		void DrawNewGame();
+		void DrawContinueGame();
+		void DrawRating();
+		void DrawExit();
 	}
 }
