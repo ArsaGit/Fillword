@@ -6,7 +6,10 @@ namespace Fillword
     {
         static void Main(string[] args)
         {
-            
+            ConsoleDrawer consoleDrawer = new ConsoleDrawer();
+            Fillword fillword = new Fillword(consoleDrawer);
+
+            fillword.Run();
         }
     }
 }
