@@ -17,7 +17,16 @@ namespace Fillword
 
 		public void Run()
 		{
-			menu.Draw();
+			RunMenu();
+		}
+
+		private void RunMenu()
+		{
+			do
+			{
+				menu.Draw();
+				menu.SelectButton();
+			} while (menu.IsRunning());
 		}
 	}
 }
