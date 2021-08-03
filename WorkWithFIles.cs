@@ -18,24 +18,23 @@ namespace Fillword
 		//считывает слова из файла и возвращает лист строк
 		public List<string> ReadFile()
 		{
-			List<string> input = new List<string>();
+			List<string> wordList = new List<string>();
 			string path = GetPathToFile("russian_nouns.txt");
 
-			foreach (string line in File.ReadLines(path))
+			foreach (string word in File.ReadLines(path))
 			{
-				input.Add(line);
+				wordList.Add(word);
 			}
-			return input;
+			return wordList;
 		}
 
 		//записывает слова в файл
-		public void WriteInFile(string content)
+		public void WriteInFile(List<string> wordList)
 		{
 			string path = GetPathToFile("russian_nouns.txt");
-			using (StreamWriter sw = new StreamWriter(path))
-			{
-				sw.WriteLine(content);  //запись данных
-			}
+			using StreamWriter sw = new StreamWriter(path);
+			foreach (string word in wordList)
+				sw.WriteLine(word);
 		}
 	}
 }
