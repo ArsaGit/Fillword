@@ -8,11 +8,16 @@ namespace Fillword
 	{
 		private readonly IDrawer drawer;
 		private readonly Menu menu;
+		private readonly WorkWithFIles workWithFIles;
+		private readonly List<string> allWords;
+		private Field field;
 
 		public Fillword(IDrawer drawer)
 		{
 			this.drawer = drawer;
 			menu = new Menu(drawer);
+			allWords = GetAllWords();
+			field = new Field(allWords);
 		}
 
 		public void Run()
@@ -54,9 +59,10 @@ namespace Fillword
 
 		private void StartNewGame()
 		{
-			Console.WriteLine("Enter Player name:");
-			string name = Console.ReadLine();
+			drawer.AskPlayer();
+			string name = drawer.GetStr();
 			Player player = new Player(name);
+
 		}
 
 		private void ContinueGame()
@@ -72,6 +78,11 @@ namespace Fillword
 		private void ExitApp()
 		{
 			drawer.DrawExit();
+		}
+
+		private List<string> GetAllWords()
+		{
+			return workWithFIles.GetAllWords();
 		}
 	}
 }

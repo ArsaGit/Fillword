@@ -11,5 +11,7 @@ namespace Fillword
 		void DrawContinueGame();
 		void DrawRating();
 		void DrawExit();
+		void AskPlayer();
+		string GetStr();
 	}
 }

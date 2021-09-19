@@ -48,5 +48,15 @@ namespace Fillword
 		{
 			Console.WriteLine("Тут однажды будет Exit");
 		}
+
+		public void AskPlayer()
+		{
+			Console.WriteLine("Enter Player name: ");
+		}
+
+		public string GetStr()
+		{
+			return Console.ReadLine();
+		}
 	}
 }

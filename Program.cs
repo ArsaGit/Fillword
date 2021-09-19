@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Fillword
 {
@@ -9,7 +10,13 @@ namespace Fillword
             ConsoleDrawer consoleDrawer = new ConsoleDrawer();
             Fillword fillword = new Fillword(consoleDrawer);
 
-            fillword.Run();
+            //fillword.Run();
+
+            Button[] buttons = {new Button("1") , new Button("2"),
+                new Button("1", new Button[] { } )
+            };
         }
+
+        
     }
 }

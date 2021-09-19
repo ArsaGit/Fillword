@@ -7,21 +7,20 @@ namespace Fillword
 	public class Menu
 	{
 		private readonly IDrawer drawer;
-		private readonly string[] buttons = {"New game",
-							"Continue",
-							"Rating",
-							"Exit"};
+		private readonly ConsoleLogic consoleLogic;
+		private readonly string[] buttons;
 
-		private int currentButtonNumber = 0;
+		public int currentButtonNumber = 0;
 
-		private bool isRunning = true;
+		public bool isRunning = true;
 
 		private const ConsoleColor SelectedColor = ConsoleColor.Green;
 		private const ConsoleColor DefaultTextColor = ConsoleColor.White;
 
-		public Menu(IDrawer drawer)
+		public Menu(IDrawer drawer, ConsoleLogic consoleLogic)
 		{
 			this.drawer = drawer;
+			this.consoleLogic = consoleLogic;
 		}
 
 		public void SelectButton()

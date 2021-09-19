@@ -6,39 +6,40 @@ namespace Fillword
 {
 	public class Field
 	{
-		private int fieldWidth;
-		private int fieldHeight;
-
-		char[,] field;
-
 		private class WordData
 		{
 			public string Word { get; set; }
 			public List<int[]> Coordinades { get; set; }
 		}
 
-		private List<WordData> words;
+		private int fieldWidth;
+		private int fieldHeight;
+
+		private List<string> allWords;
+		private char[,] field;
+		private List<WordData> wordsords;
 
 		private const ConsoleColor CurrentCellColor = ConsoleColor.Green;
 		private const ConsoleColor SelectedCellColor = ConsoleColor.Blue;
 		private const ConsoleColor GuessedCellColor = ConsoleColor.Gray;
 
-		public Field()
+		public Field(List<string> allWords)
 		{
 			fieldHeight = 6;
-			fieldWidth = 6;
-			GenerateField();
+			fieldWidth = 8;
+			this.allWords = allWords;
+			field = GenerateField();
 		}
 
-		public void GenerateField()
+		public char[,] GenerateField()
 		{
-			field = new char[fieldHeight, fieldWidth];
-
+			
+			return new char[fieldHeight, fieldWidth];
 		}
 
 		private void GetWords()
 		{
-
+			
 		}
 	}
 }

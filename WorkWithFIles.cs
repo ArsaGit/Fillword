@@ -16,7 +16,7 @@ namespace Fillword
 		}
 
 		//считывает слова из файла и возвращает лист строк
-		public List<string> ReadFile()
+		public List<string> GetAllWords()
 		{
 			List<string> wordList = new List<string>();
 			string path = GetPathToFile("russian_nouns.txt");
@@ -29,7 +29,7 @@ namespace Fillword
 		}
 
 		//записывает слова в файл
-		public void WriteInFile(List<string> wordList)
+		public void SaveAllWords(List<string> wordList)
 		{
 			string path = GetPathToFile("russian_nouns.txt");
 			using StreamWriter sw = new StreamWriter(path);
