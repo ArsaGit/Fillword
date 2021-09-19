@@ -6,8 +6,7 @@ namespace Fillword
 {
 	public class ConsoleLogic
 	{
-
-		public void ChooseButton(ButtonCollection buttonCollection)
+		public void SelectButton(ButtonCollection buttonCollection)
 		{
 			ConsoleKeyInfo chInput = Console.ReadKey();
 
@@ -30,5 +29,7 @@ namespace Fillword
 					break;
 			}
 		}
+
+
 	}
 }

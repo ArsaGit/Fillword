@@ -10,14 +10,16 @@ namespace Fillword
 		private readonly Menu menu;
 		private readonly WorkWithFIles workWithFIles;
 		private readonly List<string> allWords;
-		private Field field;
+		private Field Field { get; set; }
+		private readonly ConsoleLogic logic;
 
-		public Fillword(IDrawer drawer)
+		public Fillword(IDrawer drawer, ConsoleLogic logic)
 		{
 			this.drawer = drawer;
-			menu = new Menu(drawer);
+			this.logic = logic;
+			menu = new Menu(drawer, logic);
 			allWords = GetAllWords();
-			field = new Field(allWords);
+			Field = new Field(allWords);
 		}
 
 		public void Run()

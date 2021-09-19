@@ -4,81 +4,45 @@ using System.Text;
 
 namespace Fillword
 {
-	public class Menu
+	public abstract class Menu
 	{
 		private readonly IDrawer drawer;
-		private readonly ConsoleLogic consoleLogic;
-		private readonly string[] buttons;
+		private readonly ConsoleLogic logic;
 
-		public int currentButtonNumber = 0;
+		public abstract string Header { get; }
+		public abstract ButtonCollection ButtonCollection { get; }
+		public bool IsRunning { get; set; }
 
-		public bool isRunning = true;
-
-		private const ConsoleColor SelectedColor = ConsoleColor.Green;
-		private const ConsoleColor DefaultTextColor = ConsoleColor.White;
-
-		public Menu(IDrawer drawer, ConsoleLogic consoleLogic)
+		public Menu(IDrawer drawer, ConsoleLogic logic)
 		{
 			this.drawer = drawer;
-			this.consoleLogic = consoleLogic;
-		}
-
-		public void SelectButton()
-		{
-			ConsoleKeyInfo chInput = Console.ReadKey();
-
-			switch (chInput.Key)
-			{
-				case ConsoleKey.UpArrow:
-				case ConsoleKey.W:
-					currentButtonNumber--;
-					break;
-				case ConsoleKey.DownArrow:
-				case ConsoleKey.S:
-					currentButtonNumber++;
-					break;
-				case ConsoleKey.Enter:
-					isRunning = false;
-					break;
-			}
-
-			if (currentButtonNumber < 0) currentButtonNumber = 3;
-			if (currentButtonNumber > 3) currentButtonNumber = 0;
+			this.logic = logic;
+			IsRunning = true;
 		}
 
 		public void Draw()
 		{
 			drawer.Draw(this);
 		}
+	}
 
-		public string[] GetButtons()
-		{
-			return buttons;
-		}
+	public class MainMenu : Menu
+	{
+		private readonly IDrawer drawer;
+		private readonly ConsoleLogic logic;
 
-		public int GetCurrentButtonNumber()
-		{
-			return currentButtonNumber;
-		}
+		public override string Header => "Fillwords";
+		public override ButtonCollection ButtonCollection => new ButtonCollection(
+			"New game",
+			"Continue",
+			"Options",
+			"Exit");
 
-		public ConsoleColor GetSelectedColor()
+		public MainMenu(IDrawer drawer, ConsoleLogic logic) : base(drawer, logic)
 		{
-			return SelectedColor;
-		}
-
-		public ConsoleColor GetDefaultTextColor()
-		{
-			return DefaultTextColor;
-		}
-
-		public bool IsCurrentButton(int i)
-		{
-			return currentButtonNumber == i;
-		}
-
-		public bool IsRunning()
-		{
-			return isRunning;
+			this.drawer = drawer;
+			this.logic = logic;
+			IsRunning = true;
 		}
 	}
 }

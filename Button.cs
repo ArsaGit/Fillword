@@ -6,9 +6,9 @@ namespace Fillword
 {
 	public class Button
 	{
-		public string Name { get; set; }
+		public string Name { get; private set; }
 		public bool IsActivated { get; set; }
-		public ButtonCollection ButtonCollection { get; set; }
+		public ButtonCollection ButtonCollection { get; private set; }
 
 		public Button(string name)
 		{
@@ -40,6 +40,23 @@ namespace Fillword
 		public ButtonCollection(Button[] buttons)
 		{
 			Buttons = buttons;
+		}
+
+		public ButtonCollection(params string[] buttons)
+		{
+			Buttons = ToButtonArray(buttons);
+		}
+
+		private Button[] ToButtonArray(string[] stringArray)
+		{
+			Button[] buttonArray = new Button[stringArray.Length];
+
+			for(int i = 0; i < stringArray.Length; i++)
+			{
+				buttonArray[i] = new Button(stringArray[i]);
+			}
+
+			return buttonArray;
 		}
 	}
 }

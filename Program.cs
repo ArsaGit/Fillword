@@ -8,7 +8,8 @@ namespace Fillword
         static void Main(string[] args)
         {
             ConsoleDrawer consoleDrawer = new ConsoleDrawer();
-            Fillword fillword = new Fillword(consoleDrawer);
+            ConsoleLogic consoleLogic = new ConsoleLogic();
+            Fillword fillword = new Fillword(consoleDrawer, consoleLogic);
 
             //fillword.Run();
 

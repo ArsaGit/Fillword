@@ -6,6 +6,9 @@ namespace Fillword
 {
 	public class ConsoleDrawer : IDrawer
 	{
+		private const ConsoleColor SelectedColor = ConsoleColor.Green;
+		private const ConsoleColor DefaultTextColor = ConsoleColor.White;
+
 		public void Draw(Menu menu)
 		{
 			Console.Clear();
